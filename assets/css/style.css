@@ -1,0 +1,11 @@
+body {
+    background-image: url("../images/map.png");
+}
+
+#jumbo {
+    margin: 100px;
+}
+.crystals {
+    width: 100px;
+    height: 100px;
+}
