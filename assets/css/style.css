@@ -5,7 +5,11 @@ body {
 #jumbo {
     margin: 100px;
 }
-.crystals {
-    width: 100px;
-    height: 100px;
+img {
+    width: 350px;
+}
+
+.container {
+    margin: 100px;
+    background-color: lightgrey;
 }

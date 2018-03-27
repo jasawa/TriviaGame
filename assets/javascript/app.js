@@ -27,8 +27,41 @@ function startQuestions() {
 
     // question form goes here
 
+    $("#questions-placeholder").html("<img src='assets/images/eiffel-tower.jpg' alt='Eiffel Tower'>");
 
-    
+
+    //var showImage = $("<img>");
+    //var images = ["../images/eiffel-tower.jpg"];
+
+    //showImage.attr('src=' + images[0]);
+    //console.log(images[0]);
+
+    //$("#questions-placeholder").append(showImage + images[0]);
+    //function displayImage() {
+    //  $("#questions-placeholder").html("<img src='../images/eiffel-tower.jpg>");
+    //}
+    //displayImage();
+
+
+    var quesStr = $("<h3>").text("This iconic landmark is found in which city?");
+    $("#questions-placeholder").append(quesStr);
+
+    var form1 = $("<form>")
+    form1.addClass("form-check");
+    $("#questions-placeholder").append(form1);
+
+    var input1 = $("<input>");
+    input1.addClass("form-check-input");
+    input1.attr({type: "radio", name: "optradio", id: "option1", value: "1"});
+    $("#questions-placeholder").append(input1 + "Madrid");
+
+    var input2 = $("<input>");
+    input2.addClass("form-check-input");
+    input2.attr({type: "radio", name: "optradio", id: "option2", value: "2"});
+    $("#questions-placeholder").append(input2 + "New York");
+
+
+
 
     // make a done button
     var doneButton = $("<button>");
@@ -46,7 +79,13 @@ function startQuestions() {
 function results() {
     console.log("in results page now");
     $("#done-button").empty();
+    $("#question-container").empty();
     clearInterval(intervalID);
+    $("#end-note").html("<h3>Hope you enjoyed your trip!</h3>");
+    $("#correct").text("Correct Answers: " + numCorrect);
+    $("#incorrect").text("Incorrect Answers: " + numWrong);
+    $("#unanswered").text("Unanswered: " + numUnanswered);
+
 }
 
 
