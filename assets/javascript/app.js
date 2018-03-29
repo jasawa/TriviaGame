@@ -2,8 +2,17 @@
 // global variables
 var numCorrect = 0;
 var numWrong = 0;
-var numUnanswered = 0;
+var numUnanswered = 5;
 var intervalID;
+
+// variables for questionnaire
+ var quesImage = ["img src='assets/images/eiffel-tower.jpg alt='Eiffel Tower'", "img src='assets/images/las-vegas.jpg alt='The Las Vegas strip'", "img src='assets/images/machu-pichu.jpg alt='panoramic view above ancient ruins'", "img src='assets/images/moscow.jpg alt='St. Basil's colorful spires", "img src='assets/images/petra.jpg alt='facade of church-like structure carved in sandstone'"];
+ var myQues = ["This iconic landmark is found in which city?", "The nightlife shines in which city?", "High in the surrounding mountains, this is which city?", "If you see this architecture, you know you are in which city?", "These ruins are all that is left of this amazing city."];
+ var cityChoices = ["Moscow", "Las Vegas", "Paris", "Petra", "Machu Pichu"];
+ var correctAns = ["Paris", "Las Vegas", "Machu Pichu", "Moscow", "Petra"];
+
+// array to store player choices
+var playerChoice = [];
 
 function startQuestions() {
     console.log("I'm in the questionnaire");
@@ -25,22 +34,10 @@ function startQuestions() {
     }
     timer();
 
-    // question form goes here
+    // Trying to dynamicallyt generate the question form 
 
     $("#questions-placeholder").html("<img src='assets/images/eiffel-tower.jpg' alt='Eiffel Tower'>");
 
-
-    //var showImage = $("<img>");
-    //var images = ["assets/images/eiffel-tower.jpg"];
-
-    //showImage.attr('src', images[0]);
-    //console.log(images[0]);
-
-    //$("#questions-placeholder").append(showImage + images[0]);
-    //function displayImage() {
-    //  $("#questions-placeholder").html("<img src='assets/images/eiffel-tower.jpg>");
-    //}
-    //displayImage();
 
     // QUESTION 1 as proof of concept
     var quesStr = $("<h3>").text("This iconic landmark is found in which city?");
@@ -75,7 +72,7 @@ function startQuestions() {
 
     $(".form-check-label").append("<p>Paris</p>");
   
-
+// variables to store player's choices will be pushed into playerChoice array after done button is pressed or timer runs out
 
 
     // make a done button
@@ -97,6 +94,18 @@ function results() {
     $("#done-button").empty();
     $("#question-container").hide();
     clearInterval(intervalID);
+
+    /*
+    for (var i=0; i<5; i++) {
+        if (playerChoice[i] == correctAns[i]) {
+            numCorrect++;
+        } 
+        else {
+            numwrong++;
+        }
+    }
+    */
+    
     $("#end-note").html("<h3>Hope you enjoyed your trip!</h3>");
     $("#correct").text("Correct Answers: " + numCorrect);
     $("#incorrect").text("Incorrect Answers: " + numWrong);
@@ -113,5 +122,3 @@ $("#start-button").on("click", function() {
     startQuestions();
 });
 
-
-console.log("The app.js is connected");
