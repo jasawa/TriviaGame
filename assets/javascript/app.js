@@ -31,35 +31,50 @@ function startQuestions() {
 
 
     //var showImage = $("<img>");
-    //var images = ["../images/eiffel-tower.jpg"];
+    //var images = ["assets/images/eiffel-tower.jpg"];
 
-    //showImage.attr('src=' + images[0]);
+    //showImage.attr('src', images[0]);
     //console.log(images[0]);
 
     //$("#questions-placeholder").append(showImage + images[0]);
     //function displayImage() {
-    //  $("#questions-placeholder").html("<img src='../images/eiffel-tower.jpg>");
+    //  $("#questions-placeholder").html("<img src='assets/images/eiffel-tower.jpg>");
     //}
     //displayImage();
 
-
+    // QUESTION 1 as proof of concept
     var quesStr = $("<h3>").text("This iconic landmark is found in which city?");
     $("#questions-placeholder").append(quesStr);
 
+    event.preventDefault();
     var form1 = $("<form>")
     form1.addClass("form-check");
     $("#questions-placeholder").append(form1);
 
+    // Answer option 1
     var input1 = $("<input>");
     input1.addClass("form-check-input");
-    input1.attr({type: "radio", name: "optradio", id: "option1", value: "1"});
-    $("#questions-placeholder").append(input1 + "Madrid");
+    input1.attr({type: "radio", name: "cities", value: "1"});
+    $(".form-check").append(input1);
 
+    var label1 = $("<label>");
+    label1.addClass("form-check-label");
+    $(".form-check").append(label1);
+
+    $(".form-check-label").append("<p>Madrid</p>");
+  
+    // Answer Option 2
     var input2 = $("<input>");
     input2.addClass("form-check-input");
-    input2.attr({type: "radio", name: "optradio", id: "option2", value: "2"});
-    $("#questions-placeholder").append(input2 + "New York");
+    input2.attr({type: "radio", name: "cities", value: "2"});
+    $(".form-check").append(input2);
 
+    var label2 = $("<label>");
+    label2.addClass("form-check-label");
+    $(".form-check").append(label2);
+
+    $(".form-check-label").append("<p>Paris</p>");
+  
 
 
 
@@ -78,8 +93,9 @@ function startQuestions() {
 
 function results() {
     console.log("in results page now");
+
     $("#done-button").empty();
-    $("#question-container").empty();
+    $("#question-container").hide();
     clearInterval(intervalID);
     $("#end-note").html("<h3>Hope you enjoyed your trip!</h3>");
     $("#correct").text("Correct Answers: " + numCorrect);
@@ -90,8 +106,8 @@ function results() {
 
 
 
-
-
+// Opening page
+//$("#question-container").hide();
 
 $("#start-button").on("click", function() {
     startQuestions();
